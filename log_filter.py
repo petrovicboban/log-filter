@@ -29,4 +29,4 @@ if __name__ == "__main__":
 
 
     for line in filter(args.ip):
-        print(line)
+        print(line, end='')
