@@ -12,10 +12,14 @@ def validate(ip):
 
 def filter(ip):
     """Filter lines on STDIN by ip"""
+    if not validate(ip):
+         sys.exit('IP or CIDR range invalid. Exiting.')
     for line in sys.stdin:
+        if not line.strip():
+            continue  # Ignore empty lines
         line_ip = line.split()[0]
         if iptools.ipv4.validate_ip(line_ip) and line_ip in iptools.IpRange(ip):
-            print(line, end='')
+            yield(line)
 
 
 if __name__ == "__main__":
@@ -23,7 +27,6 @@ if __name__ == "__main__":
     parser.add_argument('--ip', dest='ip', help='IP address or CIDR range')
     args = parser.parse_args()
 
-    if not validate(args.ip):
-         sys.exit('IP or CIDR range invalid. Exiting.')
 
-    filter(args.ip)
+    for line in filter(args.ip):
+        print(line)
