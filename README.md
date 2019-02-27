@@ -9,7 +9,7 @@ Python access log filter
     
 ## Tests
 ```
-➜  git:(master) python3 -m pytest tests -v
+➜  git:(master) python3 -m pytest -v
 ============================================================================================================ test session starts =============================================================================================================
 platform darwin -- Python 3.7.0, pytest-4.3.0, py-1.8.0, pluggy-0.9.0 -- /usr/local/opt/python/bin/python3.7
 cachedir: .pytest_cache
